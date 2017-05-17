@@ -22,14 +22,11 @@ const handleSubmit = (ev) => {
 
   const item2 = document.createElement('li')
   const text2 = document.createTextNode('Hair Color: ')
-  item2.appendChild(text2)
-  //console.log(form.length)
-  //const fun = document.getElementsByTagName('label')
-  //console.log(form[1].value)
   const colorDiv = document.createElement('div')
   colorDiv.style.backgroundColor = hairColor
   colorDiv.style.height = '50px'
   colorDiv.style.width = '100px'
+  item2.appendChild(text2)
   item2.appendChild(colorDiv)
   list.appendChild(item2)
 
