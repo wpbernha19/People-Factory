@@ -1,44 +1,46 @@
-{
-const personForm = document.querySelector('form')
+const App = {
+  init() {
+    const personForm = document.querySelector('form')
+    personForm.addEventListener('submit', this.handleSubmit.bind(this))
+  },
 
-const renderColor = (hairColor) => {
-    const colorDiv = document.createElement('div')
-    colorDiv.style.backgroundColor = hairColor
-    colorDiv.style.width = '100px'
-    colorDiv.style.height = '20px'
-    return colorDiv
-  }
+  renderColor: (hairColor) => {
+      const colorDiv = document.createElement('div')
+      colorDiv.style.backgroundColor = hairColor
+      colorDiv.style.width = '100px'
+      colorDiv.style.height = '20px'
+      return colorDiv
+    },
 
-  const renderItem = (name, value) => {
-    const item = document.createElement('li')
-    item.innerHTML = `${name}: ${value}`
-    return item
-  }
+    renderItem(name, value) {
+      const item = document.createElement('li')
+      item.innerHTML = `${name}: ${value}`
+      return item
+    },
 
-const renderList = (person) => {
-  const list = document.createElement('ul')
-  Array.from(person).map((input, _i, _formElements) => {
-    if (input.value){
-      let value = input.value
-      if(input.type === 'color') {
-        value = renderColor(value).outerHTML
+  renderList(person) {
+    const list = document.createElement('ul')
+    Array.from(person).map((input, _i, _formElements) => {
+      if (input.value){
+        let value = input.value
+        if(input.type === 'color') {
+          value = this.renderColor(value).outerHTML
+        }
+        const li = this.renderItem(input.name, value)
+        list.appendChild(li)
       }
-      const li = renderItem(input.name, value)
-      list.appendChild(li)
-    }
-  })
-  return list
+    })
+    return list
+  },
+
+  handleSubmit(ev) {
+    ev.preventDefault()
+    const form = ev.target
+    const details = document.querySelector('.details')
+
+    const list = this.renderList(form.elements)
+    details.appendChild(list)
+  },
 }
 
-const handleSubmit = (ev) => {
-  ev.preventDefault()
-  const form = ev.target
-  const details = document.querySelector('.details')
-
-  const list = renderList(form.elements)
-  details.appendChild(list)
-
-}
-
-personForm.addEventListener('submit', handleSubmit)
-}
+App.init()
