@@ -1,8 +1,9 @@
+{
 const personForm = document.querySelector('form')
 
 const renderColor = (hairColor) => {
     const colorDiv = document.createElement('div')
-    colorDiv.style.backgroundColor = value
+    colorDiv.style.backgroundColor = hairColor
     colorDiv.style.width = '100px'
     colorDiv.style.height = '20px'
     return colorDiv
@@ -18,8 +19,12 @@ const renderList = (person) => {
   const list = document.createElement('ul')
   Array.from(person).map((input, _i, _formElements) => {
     if (input.value){
-    const li = renderItem(input.name, input.value)
-    list.appendChild(li)
+      let value = input.value
+      if(input.type === 'color') {
+        value = renderColor(value).outerHTML
+      }
+      const li = renderItem(input.name, value)
+      list.appendChild(li)
     }
   })
   return list
@@ -36,3 +41,4 @@ const handleSubmit = (ev) => {
 }
 
 personForm.addEventListener('submit', handleSubmit)
+}
