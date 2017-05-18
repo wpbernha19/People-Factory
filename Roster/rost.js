@@ -5,22 +5,19 @@ const rost = {
         personForm.addEventListener('submit', this.handleSubmit.bind(this))
     },
 
-    renderItem(name, value) {
+    renderItem(value) {
       const item = document.createElement('li')
-      item.innerHTML = `${name}: ${value}`
+      item.innerHTML = `${value}`
       return item
     },
 
     renderList(person) {
         const list = document.createElement('ul')
         Array.from(person).map((input, _i, _formElements) => {
-        if (input.value){
-            let value = input.value
-            // if(input.type === 'color') {
-            //     value = this.renderColor(value).outerHTML
-            // }
-            const li = this.renderItem(input.name, value)
-            list.appendChild(li)
+            if (input.value){
+                let value = input.value
+                const li = this.renderItem(value)
+                list.appendChild(li)
             }
         })
         return list
@@ -32,7 +29,14 @@ const rost = {
         const details = document.querySelector('.details')
 
         const list = this.renderList(form.elements)
-        details.appendChild(list)
+        const listLength = document.querySelectorAll('li')
+        const length = listLength.length
+        if(length < 1) {
+            details.appendChild(list)
+        }
+        else {
+            details.insertBefore(list,details.childNodes[0])
+        }
     },
 }
 //Run the Roster Method (Main Method)
