@@ -42,12 +42,6 @@ const rost = {
         return list
     },
 
-    // renderButton(list) {
-    //     const button = document.createElement('button')
-    //     button.innerText = 'Delete'
-    //     list.appendChild(button)
-    // },
-
     handleSubmit(ev) {
         ev.preventDefault()
         const form = ev.target
