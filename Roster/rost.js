@@ -23,9 +23,9 @@ const rost = {
         const button = document.createElement('button')
         button.innerText = 'Delete'
         list.appendChild(button)
-        button.onclick=function(){
-            list.removeChild(list.options[list.selectedIndex]);
-        };
+        button.addEventListener('click', () => {
+            list.parentNode.removeChild(list)
+        })
         return list
     },
 
@@ -50,6 +50,7 @@ const rost = {
             details.insertBefore(list,details.childNodes[0])
         }
     },
+
 }
 //Run the Roster Method (Main Method)
 rost.init()
