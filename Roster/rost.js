@@ -20,11 +20,20 @@ const rost = {
                 list.appendChild(li)
             }
         })
-        const button = document.createElement('button')
-        button.innerText = 'Delete'
-        list.appendChild(button)
-        button.addEventListener('click', () => {
+        const deleteButton = document.createElement('button')
+        deleteButton.innerText = 'Delete'
+        list.appendChild(deleteButton)
+        deleteButton.addEventListener('click', () => {
             list.parentNode.removeChild(list)
+        })
+        const promoteButton = document.createElement('button')
+        promoteButton.innerText = 'Promote'
+        list.appendChild(promoteButton)
+        promoteButton.addEventListener('click', () => {
+            let color = '#'; // hexadecimal starting symbol
+            let letters = ['000000','FF0000','00FF00','0000FF','FFFF00','00FFFF','FF00FF','C0C0C0']; //Set your colors here
+            color += letters[Math.floor(Math.random() * letters.length)]
+            list.style.backgroundColor = color
         })
         return list
     },
