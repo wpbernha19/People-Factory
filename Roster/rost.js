@@ -20,8 +20,20 @@ const rost = {
                 list.appendChild(li)
             }
         })
+        const button = document.createElement('button')
+        button.innerText = 'Delete'
+        list.appendChild(button)
+        button.onclick=function(){
+            list.removeChild(list.options[list.selectedIndex]);
+        };
         return list
     },
+
+    // renderButton(list) {
+    //     const button = document.createElement('button')
+    //     button.innerText = 'Delete'
+    //     list.appendChild(button)
+    // },
 
     handleSubmit(ev) {
         ev.preventDefault()
