@@ -48,12 +48,31 @@ const rost = {
         .querySelector('button.remove')
         .addEventListener('click', this.removeStudent.bind(this))
 
+        li
+        .querySelector('button.promote')
+        .addEventListener('click', this.promoteStudent.bind(this))
+
         return li
     },
 
     removeStudent(ev) {
         const btn = ev.target
         btn.closest('.student').remove()
+
+        // Remove it from the this.students array
+        // this.students.splice(?, 1)
+    },
+
+    promoteStudent(ev) {
+        const btn = ev.target
+
+        let color = '#'; // hexadecimal starting symbol
+        let borderColor = '#'
+        let letters = ['000000','FF0000','00FF00','0000FF','FFFF00','00FFFF','FF00FF','C0C0C0']; //Set your colors here
+        color += letters[Math.floor(Math.random() * letters.length)]
+        borderColor += letters[Math.floor(Math.random() * letters.length)]
+        btn.closest('.student').style.backgroundColor = color
+        btn.closest('.student').style.border = 'thick solid '+borderColor
 
         // Remove it from the this.students array
         // this.students.splice(?, 1)
