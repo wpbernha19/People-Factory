@@ -25,7 +25,7 @@ const megaroster = {
 
     this.students.unshift(student)
     
-    const listItem = this.buildListItem(student)
+    const listItem = this.editedListItem(student)
     this.prependChild(this.studentList, listItem)
     
     this.max ++
@@ -47,12 +47,18 @@ const megaroster = {
       .querySelector('button.remove')
       .addEventListener('click', this.removeStudent.bind(this))
 
-    //   li2
-    //     .querySelector('button.promote')
-    //     .addEventListener('click', this.promoteStudent.bind(this))
-
-
     return li
+  },
+
+  editedListItem(student) {
+    const li2 = this.buildListItem(student)
+
+    li2
+      .querySelector('button.rounded')
+      .addEventListener('click', this.promoteStudent.bind(this))
+      
+    return li2
+
   },
 
   removeStudent(ev) {
@@ -63,20 +69,20 @@ const megaroster = {
     // this.students.splice(?, 1)
   },
 
-//   promoteStudent(ev) {
-//         const btn = ev.target
+  promoteStudent(ev) {
+        const btn = ev.target
 
-//         let color = '#'; // hexadecimal starting symbol
-//         let borderColor = '#'
-//         let letters = ['000000','FF0000','00FF00','0000FF','FFFF00','00FFFF','FF00FF','C0C0C0']; //Set your colors here
-//         color += letters[Math.floor(Math.random() * letters.length)]
-//         borderColor += letters[Math.floor(Math.random() * letters.length)]
-//         btn.closest('.student').style.backgroundColor = color
-//         btn.closest('.student').style.border = 'thick solid '+borderColor
+        let color = '#'; // hexadecimal starting symbol
+        let borderColor = '#'
+        let letters = ['000000','FF0000','00FF00','0000FF','FFFF00','00FFFF','FF00FF','C0C0C0']; //Set your colors here
+        color += letters[Math.floor(Math.random() * letters.length)]
+        borderColor += letters[Math.floor(Math.random() * letters.length)]
+        btn.closest('.student').style.backgroundColor = color
+        btn.closest('.student').style.border = 'thick solid '+borderColor
 
-//         // Remove it from the this.students array
-//         // this.students.splice(?, 1)
-//     },
+        // Remove it from the this.students array
+        // this.students.splice(?, 1)
+    },
 
   removeClassName(el, className) {
     el.className = el.className.replace(className, '').trim()
