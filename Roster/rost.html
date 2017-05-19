@@ -10,41 +10,41 @@
         <link rel="stylesheet" href="rost.css">
     </head>
     <body>
-        <div class="row">
-            <div class="medium-offset-2 medium-8 columns">
-                <h2>Megaroster</h2>
-                <form id="new-student">
-                    <div class="small-9 columns">
-                        <input
-                        type="text"
-                        name="studentName"
-                        placeholder="Enter student name"
-                        autofocus
-                        required
-                        >
-                    </div>
-                    <div class="small-3 columns">
-                        <button type="submit" class="expanded button">Add Student</button>
-                    </div>
-                </form>
+    <div class="row">
+      <div class="medium-offset-2 medium-8 columns">
+        <h2>Megaroster</h2>
+        <form id="new-student">
+          <div class="input-group">
+            <input
+              class="input-group-field"
+              type="text"
+              name="studentName"
+              placeholder="Enter student name"
+              autofocus
+              required
+            >
+            <div class="input-group-button">
+              <button type="submit" class="success expanded button">Add Student</button>
             </div>
-        </div>
+          </div>
+        </form>
+      </div>
+    </div>
 
-        <div class="row">
-            <div class="medium-offset-2 medium-8 columns">
-                <ul id="student-list">
-                    <li class="student template">
-                        <span class="student-name"></span>
-                        <span class="actions">
-                        <button type="button" class="remove alert button">Remove</button>
-                        <button type="button" class="button round">Promote</button>
-                        <button type="button" class="hollow success up button">Up</button>
-                        <button type="button" class="hollow success down button">Down</button>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-        </div>
+    <div class="row">
+      <div class="medium-offset-2 medium-8 columns">
+        <ul id="student-list" class="no-bullet">
+          <li class="student template clearfix">
+            <span class="student-name"></span>
+            <span class="actions button-group">
+              <button type="button" class="remove alert button">Remove</button>
+              <button type="button" class="promote warning button">Promote</button>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
 
 
         <script src="js/vendor/jquery.js"></script>
