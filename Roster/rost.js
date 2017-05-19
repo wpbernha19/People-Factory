@@ -25,7 +25,7 @@ const megaroster = {
 
     this.students.unshift(student)
     
-    const listItem = this.editedListItem(student)
+    const listItem = this.moveUp(student)
     this.prependChild(this.studentList, listItem)
     
     this.max ++
@@ -58,6 +58,19 @@ const megaroster = {
       .addEventListener('click', this.promoteStudent.bind(this))
       
     return li2
+  },
+  
+  moveUp(student) {
+    const li3 = this.editedListItem(student)
+
+    li3
+      .querySelector('button.up')
+      .addEventListener('click', this.itemUp.bind(this))
+    
+    return li3
+  },
+
+  moveDown() {
 
   },
 
@@ -82,6 +95,17 @@ const megaroster = {
 
         // Remove it from the this.students array
         // this.students.splice(?, 1)
+    },
+
+    itemUp(ev) {
+        const btn = ev.target
+        const student = btn.closest('.student')
+        student.prependChild(student.parentChild, student)
+
+    }, 
+
+    itemDown(ev) {
+
     },
 
   removeClassName(el, className) {
