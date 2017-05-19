@@ -62,6 +62,10 @@ const megaroster = {
       .querySelector('button.remove')
       .addEventListener('click', this.removeStudent.bind(this))
 
+    li
+      .querySelector('button.warning')
+      .addEventListener('click', this.promoteStudent.bind(this))
+
     return li
   },
 
