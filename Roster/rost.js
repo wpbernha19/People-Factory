@@ -55,6 +55,7 @@ const megaroster = {
     const template = document.querySelector('.student.template')
     const li = template.cloneNode(true)
     li.querySelector('.student-name').textContent = student.name
+    li.setAttribute('title', student.name)
     li.dataset.id = student.id
     this.removeClassName(li, 'template')
 
@@ -64,7 +65,7 @@ const megaroster = {
 
     li
       .querySelector('button.warning')
-      .addEventListener('click', this.promoteStudent.bind(this))
+      .addEventListener('click', this.promoteStudent.bind(student, this))
 
     return li
   },
@@ -93,15 +94,15 @@ const megaroster = {
       localStorage.setItem('roster', JSON.stringify(this.students))
   },
 
-  editedListItem(student) {
-    const li2 = this.buildListItem(student)
+  // editedListItem(student) {
+  //   const li2 = this.buildListItem(student)
 
-    li2
-      .querySelector('button.round')
-      .addEventListener('click', this.promoteStudent.bind(this))
+  //   li2
+  //     .querySelector('button.round')
+  //     .addEventListener('click', this.promoteStudent.bind(this))
       
-    return li2
-  },
+  //   return li2
+  // },
   
   moveUp(student) {
     const li3 = this.editedListItem(student)
@@ -133,7 +134,7 @@ const megaroster = {
     this.save()
   },
 
-  promoteStudent(ev) {
+  promoteStudent(student, ev) {
         const btn = ev.target
 
         let color = '#'; // hexadecimal starting symbol
@@ -143,6 +144,9 @@ const megaroster = {
         borderColor += letters[Math.floor(Math.random() * letters.length)]
         btn.closest('.student').style.backgroundColor = color
         btn.closest('.student').style.border = 'thick solid '+borderColor
+
+        student.promoted = true
+        this.save()
 
     },
 
