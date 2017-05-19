@@ -54,7 +54,7 @@ const megaroster = {
     const li2 = this.buildListItem(student)
 
     li2
-      .querySelector('button.rounded')
+      .querySelector('button.round')
       .addEventListener('click', this.promoteStudent.bind(this))
       
     return li2
